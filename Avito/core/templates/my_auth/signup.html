@@ -1,0 +1,17 @@
+<article>
+    <h3>Регистрация</h3>
+    <hr>
+    {% if not registered %}
+        <form method='POST'>
+            {% csrf_token %}
+            {% for field in form %}
+                <h3> {{ field }} </h3>
+                <ul> {{ field.errors }}</ul>
+            {% endfor %}
+            <button typy='submit'> Зарегистрироваться </button>
+        </form>
+    {% else %}
+        <h3> Вы успешно зарегистрировались </h3>
+        <a href='{% url "login" %}'> Войти </a>
+    {% endif %}
+</article>

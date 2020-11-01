@@ -1,0 +1,22 @@
+{% extends 'core/layout.html' %}
+
+{% block unique_content %}
+
+    <p><h2>Категории объявлений</h2></p>
+    <p>
+        {% if categories %}
+            <ul>
+                {% for cat in categories %}
+                    <li>
+                        <p>
+                            <a href="{%url 'det_categories' cat.id %}">
+                                {{ cat }}
+                            </a>
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </p>
+    
+{% endblock unique_content %}

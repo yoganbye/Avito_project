@@ -1,0 +1,7 @@
+.main-list{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0px 5px 0px;
+    padding: 1px 0;
+}
+

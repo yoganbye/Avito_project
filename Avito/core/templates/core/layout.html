@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% include 'core/_header.html' %}
+
+    {% block unique_content %}
+
+    {% endblock unique_content %}
+
+    {% include 'core/_footer.html' %}
+
+</body>
+</html>

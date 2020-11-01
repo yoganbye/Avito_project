@@ -1,0 +1,15 @@
+{% extends 'core/layout.html' %}
+
+{% block unique_content %}
+
+    {% if ad.author != user %}
+        <h1 class='msg'> Удалить данное объявление может только его автор.</h1>
+    {% else %}
+        <h1 class="msg"> Вы уверены, что хотите удалить объявление?</h1>
+            <form method="POST" action="{% url 'ad_delete' ad.id %}">
+                {% csrf_token %}
+                <button type="submit"> Удалить </button>
+            </form>
+    {% endif %}
+
+{% endblock unique_content %}

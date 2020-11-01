@@ -1,0 +1,45 @@
+{% extends 'core/layout.html' %}
+
+{% block unique_content %}
+
+    <p><h2>{{ ad.heading }}</h2></p>
+    <p>Автор: <a href="{% url 'profile' ad.author.id %}">{{ ad.author }}</a></p>
+    <p>Дата публикации: {{ ad.date_pub }}</p>
+    <p>
+        <img alt="announce's image" src='{{ ad.image.url }}' 
+        style="width: 450px; height: 450px;">
+    </p>
+    <p>Цена: {{ ad.price }} $</p>
+    <p>Описание: {{ ad.description }}</p>
+    <p>Количество просмотров: {{ ad.views_count }}</p>
+
+    {% if ad.author == user %}
+        <p>
+            <a href="{% url 'ad_edit' ad.id %}">
+                <button type='submit'>Редактировать объявление</button>
+            </a>
+        </p>
+        <p>
+            <a href="{% url 'ad_delete' ad.id %}">
+                <button type='submit'>Удалить объявление</button>
+            </a>
+        </p>
+    {% endif %}
+    <hr>
+    <p>Комментарии:</p>
+    {% for comment in comments %}
+        <p><a href="{% url 'profile' comment.author.id %}">{{ comment.author }}</a></p>
+        <p>{{ comment.text }}</p>
+    {% endfor %}
+    
+    {% if user.is_authenticated %}
+        <p>
+            <form method='POST' enctype='multipart/form-data'>
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type='submit'>Комментарий</button>
+            </form> 
+        </p>   
+    {% endif %}
+
+{% endblock unique_content %}

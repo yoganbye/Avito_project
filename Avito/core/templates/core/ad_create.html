@@ -1,0 +1,11 @@
+{% extends 'core/layout.html' %}
+
+{% block unique_content %}
+
+    <form method='post' enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type='submit'>Опубликовать</button>
+    </form>    
+
+{% endblock unique_content %}

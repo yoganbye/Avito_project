@@ -1,0 +1,49 @@
+<header>
+    {% load static %}
+    {%block static_block %}
+        <link rel='stylesheet' type='text/css' href='{% static "core/css/index.css" %}'>
+    {% endblock static_block %}
+   
+    <p> 
+        <h1>Avito</h1>
+        Размещайте объявления и совершайте покупки на Авито! Удобно. Быстро. Безопасно. Выгодно.
+    </p>
+    <hr>
+    <ul class="main-list">    
+        <div>
+            <a href="{%url 'index' %}"> Главная страница </a>  
+        </div>
+        <div>  
+            <a href="{%url 'categories' %}"> Просмотр категорий объявлений </a>
+        </div>
+        <div>
+            <a href="{%url 'announce' %}"> Просмотр всех объявлений </a>
+        </div>
+        <div>
+            <a href="{%url 'ad_create' %}">
+                <button type='submit'>Создать объявление</button>
+            </a>
+        </div>
+    </ul>    
+    <hr>
+    {% if user.is_authenticated %}
+        <p><a href="{% url 'profile' user.id %}">Мой профиль</a></p>
+        <form action='{% url "logout" %}' method="GET">
+            <button type="submit"> Logout </button>
+        </form>
+    {% else %}
+        <form action='{% url "login" %}' method="GET">
+            <button type="submit"> Login </button>
+        </form>
+        <p>
+            <a href="{% url 'password_reset' %}">
+                <button type='submit'>Восстановление пароля</button>
+            </a>
+        </p>
+    {% endif %}
+
+    <hr>
+    </p>
+    
+
+</header>
