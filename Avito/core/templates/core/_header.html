@@ -20,9 +20,7 @@
             <a href="{%url 'announce' %}"> Просмотр всех объявлений </a>
         </div>
         <div>
-            <a href="{%url 'ad_create' %}">
-                <button type='submit'>Создать объявление</button>
-            </a>
+            <a href="{%url 'ad_create' %}">Создать объявление</a>
         </div>
     </ul>    
     <hr>
@@ -32,9 +30,16 @@
             <button type="submit"> Logout </button>
         </form>
     {% else %}
-        <form action='{% url "login" %}' method="GET">
-            <button type="submit"> Login </button>
-        </form>
+        <p>
+            <form action='{% url "login" %}' method="GET">
+                <button type="submit"> Login </button>
+            </form>
+        </p>
+        <p>
+            <form action='{% url "signup" %}' method="GET">
+                <button type="submit"> Register </button>
+            </form>
+        </p>
         <p>
             <a href="{% url 'password_reset' %}">
                 <button type='submit'>Восстановление пароля</button>

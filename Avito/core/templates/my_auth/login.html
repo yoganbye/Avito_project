@@ -1,3 +1,6 @@
+{% extends 'core/layout.html' %}
+
+{% block unique_content %}
 <article>
     {% if form.errors %}
         {% for field, errors in form.errors.item %}
@@ -21,3 +24,5 @@
             <a href='{% url "index" %}'>На главную</a>
         {% endif %}
 </article>
+
+{% endblock unique_content %}

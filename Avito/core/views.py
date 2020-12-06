@@ -53,7 +53,7 @@ class CreateAdView(CreateView):
         else:
             context['ad_was_created'] = False
             context['form'] = form
-            return render(request, template_name, context)
+            return render(request, self.template_name, context)
 
 
 class DeleteAdView(DeleteView):

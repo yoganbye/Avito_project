@@ -1,3 +1,6 @@
+{% extends 'core/layout.html' %}
+
+{% block unique_content %}
 <article>
     <h3>Регистрация</h3>
     <hr>
@@ -15,3 +18,4 @@
         <a href='{% url "login" %}'> Войти </a>
     {% endif %}
 </article>
+{% endblock unique_content %}

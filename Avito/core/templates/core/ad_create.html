@@ -2,10 +2,26 @@
 
 {% block unique_content %}
 
-    <form method='post' enctype='multipart/form-data'>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type='submit'>Опубликовать</button>
-    </form>    
+    {% if user.is_authenticated %}
+
+        {% if post_was_created %}
+            <h2 class="main-page-header"> Объявление успешно созданно. </h2>
+            <div class="create-block">
+                <a class="create-btn" href="{% url 'ad_create' %}">Новое объявление</a>
+                <a class="create-btn" href="{% url 'index' %}">На главную страницу</a>
+            </div>
+        {% else %}
+            <form method='post' enctype='multipart/form-data'>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type='submit'>Опубликовать</button>
+            </form>    
+        {% endif %}
+        </div>
+    {% else %}
+        <h3 class="main-page-header"> Для создания объявления, вы должны 
+        <a href="{% url 'login' %}"> войти </a> или
+        <a href="{% url 'signup' %}"> зарегистрироваться </a> </h3>
+    {% endif %}
 
 {% endblock unique_content %}
