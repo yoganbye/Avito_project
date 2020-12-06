@@ -44,7 +44,7 @@ class Ad(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ForeignKey(CategoriesAd, on_delete=models.CASCADE)
     description = models.TextField(max_length=1000, blank=True)
-    price = models.TextField(max_length=20, blank=True)
+    price = models.DecimalField(max_digits=19, decimal_places=2, blank=True)
     image = models.ImageField(upload_to=ad_path, default=None)
     date_pub = models.DateTimeField(default=timezone.now)
     date_edit = models.DateTimeField(default=timezone.now())
