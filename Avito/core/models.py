@@ -51,7 +51,7 @@ class Ad(models.Model):
     views_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return '{}, price {}$'.format(self.heading, self.price)#, self.date_pub.strftime("%m/%d/%Y %H:%M:%S")
+        return '{}, price {}$'.format(self.heading, self.price)
 
 
 class Comment(models.Model):  
